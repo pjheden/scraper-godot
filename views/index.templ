@@ -1,0 +1,22 @@
+package views
+
+import (
+	"fmt"
+	"github.com/pjheden/scraper-godot/views/components"
+)
+
+templ Index() {
+	<!DOCTYPE html>
+	<html lang="en">
+		@components.Header()
+		<body>
+			<main class="min-h-screen w-full">
+				<nav class="flex w-full border border-b-zinc-200 px-4 py-4">
+					<h3 class="text-base lg:text-lg font-medium text-center">
+						Godot Assets
+					</h3>
+				</nav>
+			</main>
+		</body>
+	</html>
+}
