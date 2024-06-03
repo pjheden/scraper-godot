@@ -6,25 +6,10 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"time"
 
 	"github.com/gocolly/colly"
+	"github.com/pjheden/scraper-godot/assets"
 )
-
-// Asset stores information about a godot asset.
-type Asset struct {
-	ID int
-	// Created       time.Time
-	// Updated       time.Time
-	Title         string
-	Description   string
-	Creator       string
-	Version       string
-	RepositoryURL string
-	Stars         int
-	FirstCommit   time.Time
-	LatestCommit  time.Time
-}
 
 func main() {
 	// godotengine collector
@@ -36,8 +21,8 @@ func main() {
 	githubCollector := godotCollector.Clone()
 	githubCollector.AllowedDomains = []string{"github.com"}
 
-	var currentAsset Asset
-	assets := []Asset{}
+	var currentAsset assets.Asset
+	allAssets := []assets.Asset{}
 
 	godotCollector.OnRequest(func(r *colly.Request) {
 		log.Println("visiting", r.URL.String())
@@ -54,7 +39,7 @@ func main() {
 			return
 		}
 
-		currentAsset = Asset{}
+		currentAsset = assets.Asset{}
 
 		{ // Get the ID from the URL.
 			url := e.Request.URL.String()
@@ -82,7 +67,7 @@ func main() {
 			githubCollector.Visit(link)
 		})
 
-		assets = append(assets, currentAsset)
+		allAssets = append(allAssets, currentAsset)
 	})
 
 	githubCollector.OnRequest(func(r *colly.Request) {
@@ -109,6 +94,6 @@ func main() {
 	enc.SetIndent("", "  ")
 
 	// Dump json to the standard output
-	enc.Encode(assets)
+	enc.Encode(allAssets)
 
 }
