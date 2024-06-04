@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/a-h/templ"
@@ -21,5 +22,5 @@ func main() {
 	})
 
 	fmt.Println("Listening to 8080...")
-	http.ListenAndServe(":8080", r)
+	log.Fatal(http.ListenAndServe(":8080", r))
 }
