@@ -21,6 +21,6 @@ func main() {
 		templ.Handler(views.Index()).ServeHTTP(w, r)
 	})
 
-	fmt.Println("Listening to 8080...")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	fmt.Println("Listening to 8081...")
+	log.Fatal(http.ListenAndServe(":8081", r))
 }
