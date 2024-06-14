@@ -76,12 +76,7 @@ func main() {
 
 	githubCollector.OnHTML("body", func(e *colly.HTMLElement) {
 		e.ForEach("span#repo-stars-counter-star", func(_ int, el *colly.HTMLElement) {
-			stars, err := strconv.Atoi(el.Text)
-			if err != nil {
-				log.Fatalf("failed to convert stars to int: %s", err)
-			}
-
-			currentAsset.Stars = stars
+			currentAsset.Stars = el.Text
 		})
 	})
 

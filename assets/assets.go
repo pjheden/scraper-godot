@@ -12,7 +12,7 @@ type Asset struct {
 	Creator       string
 	Version       string
 	RepositoryURL string
-	Stars         int
+	Stars         string
 	FirstCommit   time.Time
 	LatestCommit  time.Time
 }
