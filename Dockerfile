@@ -1,6 +1,5 @@
 # syntax=docker/dockerfile:1
 FROM golang:1.22.3 as builder
-
 WORKDIR /app
 
 COPY go.mod go.sum ./
@@ -10,8 +9,7 @@ COPY ../.. ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /bin/server ./cmd/server
 
 
-FROM golang:1.22.3 as final
-
+FROM alpine:latest as final
 WORKDIR /app
 
 EXPOSE 8081
