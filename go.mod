@@ -12,7 +12,7 @@ require (
 require (
 	github.com/Masterminds/squirrel v1.5.4
 	github.com/PuerkitoBio/goquery v1.9.2 // indirect
-	github.com/a-h/templ v0.2.707 // indirect
+	github.com/a-h/templ v0.2.731 // indirect
 	github.com/andybalholm/cascadia v1.3.2 // indirect
 	github.com/antchfx/htmlquery v1.3.1 // indirect
 	github.com/antchfx/xmlquery v1.4.0 // indirect
