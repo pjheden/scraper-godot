@@ -12,7 +12,7 @@ jobs:
           go-version: "1.22.3"
 
       - run: |
-          go get -u github.com/a-h/templ
+          go install github.com/a-h/templ/cmd/templ@v0.2.731
           templ generate ./...
           templ fmt ./...
 
