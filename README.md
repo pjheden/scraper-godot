@@ -23,5 +23,11 @@ go run cmd/scraper/main.go
 ## Generate templates
 
 ```
-templ generate ./...
+templ generate
+```
+
+## Format templates
+
+```
+templ fmt .
 ```

@@ -13,8 +13,8 @@ jobs:
 
       - run: |
           go install github.com/a-h/templ/cmd/templ@v0.2.731
-          templ generate ./...
-          templ fmt ./...
+          templ generate
+          templ fmt .
 
       - name: Ensure clean
         run: git diff --exit-code
