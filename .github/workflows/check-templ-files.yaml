@@ -1,0 +1,21 @@
+name: check-templ-files
+on: [pull_request]
+jobs:
+  generate-templ:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go 1.22.3
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22.3"
+
+      - run: go get github.com/a-h/templ
+
+      - run: templ generate ./...
+
+      - run: templ fmt ./...
+
+      - name: Ensure clean
+        run: git diff --exit-code
