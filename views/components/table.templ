@@ -1,0 +1,29 @@
+package components
+
+templ Tables(table Table) {
+    <div>
+        <table class="table-auto">
+          <thead>
+            <tr>
+                for _, column := range table.Columns {
+                    <th>{column.Name}</th>
+                }
+            </tr>
+          </thead>
+          <tbody>
+            for _, row := range table.Rows {
+                <tr>
+                    // Use row.ID top populate the key attribute
+                    for i, cell := range row {
+                        if table.Columns[i].IsHref {
+                            <td><a href={templ.SafeURL(cell)}>{cell}</a></td>
+                        } else {
+                            <td>{cell}</td>
+                        }
+                    }
+                </tr>
+            }
+          </tbody>
+        </table>
+    </div>
+}

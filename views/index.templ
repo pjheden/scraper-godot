@@ -2,7 +2,7 @@ package views
 
 import "github.com/pjheden/scraper-godot/views/components"
 
-templ Index() {
+templ Index(assets components.Table) {
 	<!DOCTYPE html>
 	<html lang="en">
 		@components.Header()
@@ -13,6 +13,9 @@ templ Index() {
 						Godot Assets
 					</h3>
 				</nav>
+				<div class="flex flex-col items-center justify-center w-full">
+                    @components.Tables(assets)
+                </div>
 			</main>
 		</body>
 	</html>
